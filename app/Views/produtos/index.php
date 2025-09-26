@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8ZR2ZQ945"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-M8ZR2ZQ945');
+    </script>
+
+
+
+
 </head>
+
 <body class="bg-light">
     <div class="container py-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -25,22 +44,25 @@
                 </thead>
                 <tbody>
                     <?php foreach ($produtos as $produto): ?>
-                    <tr>
-                        <td><?= esc($produto['id']) ?></td>
-                        <td><?= esc($produto['nome']) ?></td>
-                        <td><?= esc($produto['categoria']) ?></td>
-                        <td>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
-                        <td class="d-flex gap-2">
-                            <a href="/produtos/edit/<?= esc($produto['id']) ?>" class="btn btn-warning btn-sm text-white">Editar</a>
-                            <form action="/produtos/delete/<?= esc($produto['id']) ?>" method="post" onsubmit="return confirm('Tem certeza que deseja excluir?');">
-                                <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
-                            </form>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td><?= esc($produto['id']) ?></td>
+                            <td><?= esc($produto['nome']) ?></td>
+                            <td><?= esc($produto['categoria']) ?></td>
+                            <td>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
+                            <td class="d-flex gap-2">
+                                <a href="/produtos/edit/<?= esc($produto['id']) ?>"
+                                    class="btn btn-warning btn-sm text-white">Editar</a>
+                                <form action="/produtos/delete/<?= esc($produto['id']) ?>" method="post"
+                                    onsubmit="return confirm('Tem certeza que deseja excluir?');">
+                                    <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                                </form>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
 </body>
+
 </html>
